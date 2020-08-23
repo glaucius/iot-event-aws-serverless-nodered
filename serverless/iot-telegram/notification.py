@@ -33,33 +33,26 @@ def lambda_handler(event, context):
     ph = event['ph']
     nivelagua = event['nivelagua']
     co2 = event['co2']
-
     emoji_temperatura = u'\U0001F321'
     emoji_humidade = u'\U0001F4A7'
-
-
     if thing == "Onca Pintada":
-    	emoji_thing = u'\U0001F406'
-            mensagem = f'Atenção, algo anormal com a Onça Pintada {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+        emoji_thing = u'\U0001F406'
+        mensagem = f'Atenção, algo anormal com a Onça Pintada {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
     if thing == "Ariranha":
         emoji_thing = u'\U0001F9A6'
-            mensagem = f'Atenção, algo anormal com a Ariranha {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+        mensagem = f'Atenção, algo anormal com a Ariranha {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
     if thing == "Preguiça":
         emoji_thing = u'\U0001F9A5'
-            mensagem = f'Atenção, algo anormal com o Preguiça {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+        mensagem = f'Atenção, algo anormal com o Preguiça {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
     if thing == "Unicornio":
         emoji_thing = u'\U0001F984'
-            mensagem = f'Nãoooooooo, pare tudo e cuide do Unicornio !!! {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
-
+        mensagem = f'Nãoooooooo, pare tudo e cuide do Unicornio !!! {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
     if thing == "SensorFogo":
         emoji_thing = u'\U0001F525'
-            mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE FOGO {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
-
+        mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE FOGO {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
     if thing == "SensorAgua":
         emoji_thing = u'\U0001F39A'
-            mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE AGUA {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
-
-
+        mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE AGUA {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
     chat_id = os.environ.get('TELEGRAM_CHATID')
     bot = configure_telegram()
     logger.info('Event: {}'.format(event))
