@@ -26,24 +26,40 @@ def configure_telegram():
 
 def lambda_handler(event, context):
     # TODO implement
-    humidade = event['humidade']
+    thing = event['thing']
     temperatura = event['temperatura']
-    hospede = event['hospede']
+    humidade = event['humidade']
+    localizacao = event['localizacao']
+    ph = event['ph']
+    nivelagua = event['nivelagua']
+    co2 = event['co2']
+
     emoji_temperatura = u'\U0001F321'
     emoji_humidade = u'\U0001F4A7'
-    if hospede == "Porco":
-    	emoji = u'\U0001F437' 
-    if hospede == "Porca":
-    	emoji = u'\U0001F437' 
-    if hospede == "Cavalo":
-    	emoji = u'\U0001F434' 
-    if hospede == "Egua":
-    	emoji = u'\U0001F434' 
-    if hospede == "Vaca":
-    	emoji = u'\U0001F42E' 
-    if hospede == "Boi":
-    	emoji = u'\U0001F42E' 
-    mensagem = f'Sua atenção é necessária:\n{emoji}: {hospede}\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+
+
+    if thing == "Onca Pintada":
+    	emoji_thing = u'\U0001F406'
+            mensagem = f'Atenção, algo anormal com a Onça Pintada {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+    if thing == "Ariranha":
+        emoji_thing = u'\U0001F9A6'
+            mensagem = f'Atenção, algo anormal com a Ariranha {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+    if thing == "Preguiça":
+        emoji_thing = u'\U0001F9A5'
+            mensagem = f'Atenção, algo anormal com o Preguiça {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+    if thing == "Unicornio":
+        emoji_thing = u'\U0001F984'
+            mensagem = f'Nãoooooooo, pare tudo e cuide do Unicornio !!! {emoji_thing} :\n{emoji_temperatura}: {temperatura}\n{emoji_humidade}: {humidade}'
+
+    if thing == "SensorFogo":
+        emoji_thing = u'\U0001F525'
+            mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE FOGO {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
+
+    if thing == "SensorAgua":
+        emoji_thing = u'\U0001F39A'
+            mensagem = f'{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing} ALERTA DE AGUA {emoji_thing}{emoji_thing}{emoji_thing}{emoji_thing}'
+
+
     chat_id = os.environ.get('TELEGRAM_CHATID')
     bot = configure_telegram()
     logger.info('Event: {}'.format(event))
