@@ -1,15 +1,15 @@
 
 # A coisa
-resource "aws_iot_thing" "parque_nacional" {
+resource "aws_iot_thing" "fazenda_nacional" {
 
-  name = "parque_nacional"
+  name = "fazenda_nacional"
 
 }
 
 # Policy e certificado
 
-resource "aws_iot_policy" "parque_nacional_policy" {
-  name = "parque_nacional_policy"
+resource "aws_iot_policy" "fazenda_nacional_policy" {
+  name = "fazenda_nacional_policy"
 
   policy = <<EOF
 {
@@ -27,33 +27,33 @@ resource "aws_iot_policy" "parque_nacional_policy" {
 EOF
 }
 
-resource "aws_iot_certificate" "parque_nacional_cert" {
+resource "aws_iot_certificate" "fazenda_nacional_cert" {
   csr    = file("thing.csr")
   active = true
 }
 
-resource "aws_iot_policy_attachment" "parque_nacional_policy_att" {
-  policy = aws_iot_policy.parque_nacional_policy.name
-  target = aws_iot_certificate.parque_nacional_cert.arn
+resource "aws_iot_policy_attachment" "fazenda_nacional_policy_att" {
+  policy = aws_iot_policy.fazenda_nacional_policy.name
+  target = aws_iot_certificate.fazenda_nacional_cert.arn
 }
 
-resource "aws_iot_thing_principal_attachment" "parque_nacional_thing_att" {
-  principal = aws_iot_certificate.parque_nacional_cert.arn
-  thing     = aws_iot_thing.parque_nacional.name
+resource "aws_iot_thing_principal_attachment" "fazenda_nacional_thing_att" {
+  principal = aws_iot_certificate.fazenda_nacional_cert.arn
+  thing     = aws_iot_thing.fazenda_nacional.name
 }
 
 
 ### Rule - Regras - Topic
 
-resource "aws_iot_topic_rule" "parque_nacional_regra" {
-  name        = "parque_nacional_regra"
+resource "aws_iot_topic_rule" "fazenda_nacional_regra" {
+  name        = "fazenda_nacional_regra"
   description = "Regra para disparar função lambda"
   enabled     = true
   sql         = "SELECT * FROM 'hospedes' where temperatura >= 39"
   sql_version = "2016-03-23"
 
   lambda {
-    function_arn     = "arn:aws:lambda:us-east-1:994210910568:function:iot-telegram-dev-notification"
+    function_arn     = var.LAMBDA_FUNCTION_ARN
   }
 }
 

@@ -23,6 +23,7 @@ variable "PUBLIC_KEY_PATH" {
   default = "minha-chave-ssh.pub"
 }
 
-variable "BUCKET_ELB" {
-  default = "bucketelbglauciusha20192020"
+variable "LAMBDA_FUNCTION_ARN" {
+  default = ""
 }
+
