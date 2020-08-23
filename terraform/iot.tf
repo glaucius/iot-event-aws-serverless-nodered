@@ -65,7 +65,7 @@ resource "aws_iot_topic_rule" "parque_nacional_regra_queimadas" {
   sql_version = "2016-03-23"
 
   lambda {
-    function_arn     = var.LAMBDA_FUNCTION_ARN
+    function_arn     = lambda.notifications.arn
   }
 }
 
@@ -77,6 +77,6 @@ resource "aws_iot_topic_rule" "parque_nacional_regra_aguas" {
   sql_version = "2016-03-23"
 
   lambda {
-    function_arn     = var.LAMBDA_FUNCTION_ARN
+    function_arn     = lambda.notifications.arn
   }
 }
