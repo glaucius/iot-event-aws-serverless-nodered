@@ -3,9 +3,8 @@ variable "AWS_REGION" {
 }
 
 
-data archive_file lambda {
-  type        = "zip"
-  source_file = "index.js"
-  output_path = "lambda_function.zip"
+variable "LAMBDA_FUNCTION_ARN" {
+  default = "ALTERAR DEPOIS QUE CRIAR AS FUNCOES LABDACOM O SERVERLESS"
+## aws lambda list-funcions 
 }
 

@@ -28,7 +28,7 @@ EOF
 }
 
 resource "aws_iot_certificate" "parque_nacional_cert" {
-  csr    = file("thing.csr")
+  csr    = file("iot.csr")
   active = true
 }
 
@@ -65,7 +65,7 @@ resource "aws_iot_topic_rule" "parque_nacional_regra_queimadas" {
   sql_version = "2016-03-23"
 
   lambda {
-    function_arn     = lambda.notifications.arn
+    function_arn     = var.LAMBDA_FUNCTION_ARN
   }
 }
 
@@ -73,10 +73,10 @@ resource "aws_iot_topic_rule" "parque_nacional_regra_aguas" {
   name        = "parque_nacional_regra_agua"
   description = "Monitoramento da qualidade da água nos locais monitorados"
   enabled     = true
-  sql         = "SELECT * FROM 'aguas' where ph >= 5 or ph >= 8,5"
+  sql         = "SELECT * FROM 'aguas' where ph >= 5"
   sql_version = "2016-03-23"
 
   lambda {
-    function_arn     = lambda.notifications.arn
+    function_arn     = var.LAMBDA_FUNCTION_ARN
   }
 }
