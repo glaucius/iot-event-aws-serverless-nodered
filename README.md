@@ -39,7 +39,7 @@ Este projeto teve como ponto de partida a minha participação em atividade e me
 
 Aqui o link da palestra (https://www.meetup.com/pt-BR/awsusergroupsp/events/272646545/)
 
-O objetivo é criar um ambiente de ponta a ponta orientado a eventos, simulando uma plataforma de monitoramento de animais e espécies de uma propriedade rural, tudo com ferramentas open source e cloud pública AWS.
+O objetivo é criar um ambiente de ponta a ponta orientado a eventos, simulando uma plataforma de monitoramento de animais e espécies de um parque de preservação ambiental, tudo com ferramentas open source e cloud pública AWS.
 
 
 ### Stack de tecnologias
