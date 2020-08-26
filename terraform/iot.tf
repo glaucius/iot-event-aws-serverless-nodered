@@ -27,18 +27,13 @@ resource "aws_iot_policy" "parque_nacional_policy" {
 EOF
 }
 
-resource "aws_iot_certificate" "parque_nacional_cert" {
-  csr    = file("iot.csr")
-  active = true
-}
-
 resource "aws_iot_policy_attachment" "parque_nacional_policy_att" {
   policy = aws_iot_policy.parque_nacional_policy.name
-  target = aws_iot_certificate.parque_nacional_cert.arn
+  target = var.IOT_CERT_ARN
 }
 
 resource "aws_iot_thing_principal_attachment" "parque_nacional_thing_att" {
-  principal = aws_iot_certificate.parque_nacional_cert.arn
+  principal = var.IOT_CERT_ARN
   thing     = aws_iot_thing.parque_nacional.name
 }
 
