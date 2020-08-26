@@ -69,12 +69,6 @@ O que você vai precisar já configurado e instalado, procure nos sites dos vend
 * [Serverless](https://www.serverless.com/framework/docs/getting-started/)
 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
-
 ### Passo 1 - Clone do repositório
 
 1. Clonar o repositorio
@@ -104,6 +98,8 @@ serverless deploy
 ```sh
 curl -X POST https:/xxxxxxxxx/dev/set_webhook
 ```
+Preste atenção a mensagem de retorno, deve aparecer a mensagem/string "ok".
+
 6. Por fim, veja os detalhes das suas funções que foram instaladas:
 ```sh
 
@@ -111,19 +107,45 @@ aws lambda list-functions
 ```
 Procure pelo ARN da função de notificação, a string é parecida com a abaixo:
 
-    function_arn     = "arn:aws:lambda:us-east-1:XXXXXXXXX:function:iot-telegram-dev-notification"
+```sh
+aws lambda get-function --function-name=iot-telegram-dev-notification | grep FunctionArn
+```
+    FunctionArn = "arn:aws:lambda:REGION:XXXXXXXXX:function:iot-telegram-dev-notification"
 
-Guarde a string da função Lambda, você vai usar em instantes.
+Guarde a string da função Lambda, que esta entre aspas "", você vai usar em instantes no código do Terraform para subir a Thing.
 
+De uma olhada no painel da AWS da sua conta e veja se as funções estão já disponíveis a fim de validação.
 
 
 ### Passo 3 - Deploy de recursos AWS - Iot - VPC  
 
-1. Editar o deploy, faço o setup dos arquivos abaixo, para configurar os detalhes do deploy
+1. Criar os certificados para os dispositivos IoT
+
+Os certificados para os dispositivos IoT, os Things, são necessários para a garantia da comunição segura e criptografada ponta a ponta, então, neste caso eu optei por seguir a recomendação da AWS e criar os certificados no dashboard da conta. Não é nada complicado, veja o link abaixo:
+
+https://docs.aws.amazon.com/iot/latest/developerguide/device-certs-create.html
+
+Faça o download dos certificados, você vai usar depois para configurar o Node Red.
+
+2. Obter o ARN do certificado
+
+Para obter o ARN do certificado, execute o comando abaixo:
+
 ```sh
-cd terraform
+aws iot list-certificates
 ```
-  - vars.tf : edite as variáveis, principalmente a LAMBDA_FUNCTION_ARN, que você captou nos passos anteriores.
+O ARN do certificado se parece como arn:aws:iot:REGION:xxxxxxxxxxx:cert/um_grande_hash
+
+Agora é hora de editar os arquivos para subir os recursos na AWS.
+
+3. Editar o deploy, faço o setup dos arquivos abaixo, para configurar os detalhes do deploy
+```sh
+cd terraform 
+nano vars.tf
+```
+  - vars.tf : edite as variáveis, principalmente a LAMBDA_FUNCTION_ARN, que você captou nos passos anteriores e o 
+
+
 2. Inicie o terraform na pasta do terraform
 ```sh
 terraform init
@@ -136,7 +158,10 @@ terraform plan -out=plano.out
 ```sh
 terraform apply plano.out
 ```
-Cruze os dedos, vá buscar um café, que vai demorar alguns minutos.
+Cruze os dedos, eu indicaria buscar um café, mas será rápido.
+
+Depois de criado, de uma visitada geral no dashboard, para ver com seus olhos o trabalho realizado pelo código.
+
 
 ### Passo 4 - Deploy da fazenda, ou, dos sensores dos bichos 
 
