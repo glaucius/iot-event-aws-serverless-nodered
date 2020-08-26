@@ -2,6 +2,7 @@ service: iot-telegram
 
 provider:
   name: aws
+  stage: prod
   runtime: python3.7
   environment:
     TELEGRAM_TOKEN: ${file(./serverless.env.yml):TELEGRAM_TOKEN, ''}
