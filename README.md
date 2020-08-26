@@ -116,7 +116,7 @@ Guarde a string da função Lambda, que esta entre aspas "", você vai usar em i
 De uma olhada no painel da AWS da sua conta e veja se as funções estão já disponíveis a fim de validação.
 
 
-### Passo 3 - Deploy de recursos AWS - Iot - VPC  
+### Passo 3 - Deploy de recursos AWS - Iot
 
 1. Criar os certificados para os dispositivos IoT
 
