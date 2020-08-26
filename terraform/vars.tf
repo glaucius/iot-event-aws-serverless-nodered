@@ -1,5 +1,5 @@
 variable "AWS_REGION" {
-  default = "us-east-1"
+  default = ""
 }
 
 variable "LAMBDA_FUNCTION_ARN" {
