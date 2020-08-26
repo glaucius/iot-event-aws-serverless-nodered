@@ -79,7 +79,7 @@ git clone https://github.com/glaucius/iot-event-aws-serverless-nodered.git
 
 1. Criando suas funções Lambda
 ```sh
-cd serverless/iot-telegram
+cd serverless/
 ```
 2. Configure o TOKEN do Telegram e o ChatId onde você quer receber as notificações:
 ```sh
@@ -95,7 +95,7 @@ serverless deploy
 ```
 5. Configure o webhook do seu bot, depois que finalizar o passo 4, você deve receber o link da sua função, então, configure o webhook da seguinte maneira :
 ```sh
-curl -X POST https:/xxxxxxxxx/dev/set_webhook
+curl -X POST https:/xxxxxxxxx/prod/set_webhook
 ```
 Preste atenção a mensagem de retorno, deve aparecer a mensagem/string "ok".
 
@@ -162,7 +162,7 @@ Cruze os dedos, eu indicaria buscar um café, mas será rápido.
 Depois de criado, de uma visitada geral no dashboard, para ver com seus olhos o trabalho realizado pelo código.
 
 
-### Passo 4 - Deploy da fazenda, ou, dos sensores dos bichos 
+### Passo 4 - Deploy dos sensores e dispositivos do Parque Nacional de preservação
 
 1. Aqui você vai precisar do docker e docker-compose instalado no seu computador
 ```sh
