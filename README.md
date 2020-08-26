@@ -145,15 +145,15 @@ nano vars.tf
   - vars.tf : edite as variáveis, principalmente a LAMBDA_FUNCTION_ARN, que você captou nos passos anteriores e o 
 
 
-2. Inicie o terraform na pasta do terraform
+4. Inicie o terraform na pasta do terraform
 ```sh
 terraform init
 ```
-2. Agora é a hora de validar o plano de deploy
+5. Agora é a hora de validar o plano de deploy
 ```sh
 terraform plan -out=plano.out
 ```
-2. Chegou o momento de fazer o deploy dos recursos na AWS
+6. Chegou o momento de fazer o deploy dos recursos na AWS
 ```sh
 terraform apply plano.out
 ```
