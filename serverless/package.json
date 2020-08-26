@@ -1,10 +1,10 @@
 {
-  "name": "serverless-telegram-bot",
-  "description": "This example demonstrates how to setup an echo Telegram Bot using the Serverless Framework ⚡🤖 ",
+  "name": "iot-aws-serverless-telegram",
+  "description": "Oi, eu sou um código para subir funções Lambda e também um Bot Telegram ⚡🤖 ",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonatasbaldin/serverless-telegram-bot.git"
+    "url": "git+https://github.com/glaucius/iot-event-aws-serverless-nodered.git"
   },
   "keywords": [
     "python",
@@ -12,13 +12,13 @@
     "lambda",
     "serverless"
   ],
-  "author": "jonatasbaldin",
+  "author": "glaucius",
   "license": "MIT",
   "dependencies": {
     "serverless-python-requirements": "^3.0.9"
   },
   "bugs": {
-    "url": "https://github.com/jonatasbaldin/serverless-telegram-bot/issues"
+    "url": "https://github.com/glaucius/iot-event-aws-serverless-nodered/issues"
   },
-  "homepage": "https://github.com/jonatasbaldin/serverless-telegram-bot#readme"
+  "homepage": "https://github.com/glaucius/iot-event-aws-serverless-nodered"
 }
