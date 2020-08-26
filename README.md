@@ -34,7 +34,6 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Este projeto teve como ponto de partida a minha participação em atividade e meetup do AWS User Group de SP, e para tanto, foi precisa criar este stack de tecnologias para demonstrar e enriquecer a palestra.
 
